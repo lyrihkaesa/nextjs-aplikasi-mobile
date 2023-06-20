@@ -1,4 +1,4 @@
-# CRUD Medicine
+# NextJS Aplikasi Mobile
 
 Ini adalah project fullstack CRUD Medicine yang menggunakan:
 
@@ -7,10 +7,33 @@ Ini adalah project fullstack CRUD Medicine yang menggunakan:
 - Tailwind CSS
 - DaisyUI
 
+## Syarat
+
+Memasang [Git for Windows](https://git-scm.com/download/win) jika menggunakan Windows. Selanjutnya memasang NodeJS LTS 18.xx.xx, bisa menggunakan [Node Version Manager (NVM)](https://github.com/coreybutler/nvm-windows/releases).
+Jika sudah memasang NVM, buka `git bash` dalam mode `Run As Administator`.
+
+```bash
+nvm install lts
+```
+
+```bash
+nvm list
+```
+
+```bash
+nvm use lts
+```
+
+Saya sarankan juga install `pnpm` supaya download package yang sering dipakai.
+
+```bash
+pnpm i -g pnpm
+```
+
 ## Cara Menjalakannya
 
 ```bash
-git clone
+git clone https://github.com/lyrihkaesa/nextjs-aplikasi-mobile.git
 ```
 
 Sebelum itu, ganti nama file `.env.example` menjadi `.env` atau salin baru ganti nama.
