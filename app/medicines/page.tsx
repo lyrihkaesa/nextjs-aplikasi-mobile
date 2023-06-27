@@ -1,12 +1,9 @@
 import React from 'react';
-import { PrismaClient } from '@prisma/client';
-import { Decimal } from '@prisma/client/runtime';
 import AddMedicine from './add-medicine';
-
-const prisma = new PrismaClient();
+import { prismaClient } from '../utils/database';
 
 const getMedicines = async () => {
-  const res = await prisma.medicine.findMany({
+  const res = await prismaClient.medicine.findMany({
     select: {
       id: true,
       code: true,

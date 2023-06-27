@@ -24,10 +24,10 @@ nvm list
 nvm use lts
 ```
 
-Saya sarankan juga install `pnpm` supaya download package yang sering dipakai.
+Saya sarankan juga install `pnpm` upgrade dari `npm` supaya package yang sering dipakai dapat digunakan kembali tanpa harus mendownload ulang, menghemat `penyimpanan internal` akibat `node_module`
 
 ```bash
-pnpm i -g pnpm
+npm i -g pnpm
 ```
 
 ## Cara Menjalakannya
@@ -57,11 +57,13 @@ Jalankan perintah dibawah untuk membuat tabel pada schema.prisma ke database:
 npx prisma migrate dev
 ```
 
-Jika sudah anda bisa menjalankan perintah dibawah, dan menjalankan [http://localhost:3000](http://localhost:3000) pada browser.
+Jika sudah anda bisa menjalankan perintah dibawah, dan menjalankan <http://localhost:3000> pada browser.
 
 ```bash
 pnpm run dev
 ```
+
+- <http://localhost:3000/medicines>
 
 ### Membuat migrations sebelum di push ke database
 
@@ -69,8 +71,16 @@ pnpm run dev
 npx prisma migrate dev --create-only
 ```
 
+penamaan migrate saya adalah
+
+```txt
+create_table_medicine
+```
+
 ### Membuka prisma studio
 
 ```bash
 npx prisma studio
 ```
+
+Tautan default prisma studio adalah <http://localhost:5555>

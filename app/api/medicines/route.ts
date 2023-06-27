@@ -1,16 +1,14 @@
-import { PrismaClient } from '@prisma/client';
+import { prismaClient } from '@/app/utils/database';
 import { NextRequest, NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
-
 export const GET = async (req: NextRequest) => {
-  const medicines = await prisma.medicine.findMany({});
+  const medicines = await prismaClient.medicine.findMany({});
   return NextResponse.json({ data: medicines });
 };
 
 export const POST = async (req: NextRequest) => {
   const { code, name, satuan, price, amount, expired, packaging, type } = await req.json();
-  const medicine = await prisma.medicine.create({
+  const medicine = await prismaClient.medicine.create({
     data: {
       code,
       name,
@@ -30,7 +28,7 @@ export const PUT = async (req: NextRequest) => {
   const { code, name, satuan, price, amount, expired, packaging, type } = await req.json();
   const param = req.nextUrl.searchParams;
   const id = Number(param.get('id'));
-  const medicine = await prisma.medicine.update({
+  const medicine = await prismaClient.medicine.update({
     where: {
       id: id,
     },
@@ -53,7 +51,7 @@ export const DELETE = async (req: NextRequest) => {
   const param = req.nextUrl.searchParams;
   const id = Number(param.get('id'));
   try {
-    await prisma.medicine.delete({
+    await prismaClient.medicine.delete({
       where: {
         id: id,
       },

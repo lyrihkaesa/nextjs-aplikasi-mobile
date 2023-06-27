@@ -21,3 +21,9 @@ model Medicine {
   packaging String?  @db.VarChar(255)
   type      String?  @db.VarChar(255)
 }
+
+model Teacher {
+  employee_code String  @id @db.VarChar(255)
+  employee_name String? @db.VarChar(255)
+  position      String? @db.VarChar(255)
+}
