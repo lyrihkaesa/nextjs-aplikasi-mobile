@@ -84,3 +84,9 @@ npx prisma studio
 ```
 
 Tautan default prisma studio adalah <http://localhost:5555>
+
+## Postman
+
+Siahkan download postman collection ini untuk uji coba:
+
+- Postman Colection [NextJS Aplikasi Mobile](./postman/NextJS%20Aplikasi%20Mobile.postman_collection.json)
