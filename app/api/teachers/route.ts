@@ -1,5 +1,4 @@
 import { prismaClient } from '@/app/utils/database';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {
@@ -18,7 +17,7 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    return NextResponse.json({ data: teacher });
+    return NextResponse.json({ data: teacher }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'kode pegawai mungkin sudah digunakan' }, { status: 400 });
   }
