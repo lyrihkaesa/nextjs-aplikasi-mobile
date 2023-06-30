@@ -24,7 +24,7 @@ export const GET = async (req: NextRequest, { params }: { params: { id: string }
 export const PUT = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id;
-    let json = await req.json();
+    let { firebase_key, employee_name, position } = await req.json();
 
     const teacher = await prismaClient.teacher.update({
       where: {
@@ -32,8 +32,9 @@ export const PUT = async (req: NextRequest, { params }: { params: { id: string }
       },
       data: {
         employee_code: id,
-        employee_name: json.employee_name,
-        position: json.position,
+        firebase_key,
+        employee_name,
+        position,
       },
     });
 

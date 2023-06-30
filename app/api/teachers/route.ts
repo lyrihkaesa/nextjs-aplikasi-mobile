@@ -7,11 +7,12 @@ export const GET = async (req: NextRequest) => {
 };
 
 export const POST = async (req: NextRequest) => {
-  const { employee_code, employee_name, position } = await req.json();
+  const { employee_code, firebase_key, employee_name, position } = await req.json();
   try {
     const teacher = await prismaClient.teacher.create({
       data: {
         employee_code,
+        firebase_key,
         employee_name,
         position,
       },
@@ -24,7 +25,7 @@ export const POST = async (req: NextRequest) => {
 };
 
 export const PUT = async (req: NextRequest) => {
-  const { employee_name, position } = await req.json();
+  const { firebase_key, employee_name, position } = await req.json();
   const param = req.nextUrl.searchParams;
   const employee_code = param.get('employee_code');
   if (employee_code === undefined && employee_code === null) {
@@ -37,6 +38,7 @@ export const PUT = async (req: NextRequest) => {
       },
       data: {
         employee_code: employee_code!,
+        firebase_key,
         employee_name,
         position,
       },

@@ -17,6 +17,7 @@ GET /api/teachers
   "data": [
     {
       "employee_code": "003",
+      "firebase_key": "random_string"
       "employee_name": "Kaesa Lyrih",
       "position": "Guru Jaringan dan Komputer"
     },
@@ -42,6 +43,7 @@ POST /api/teachers
 ```json
 {
   "employee_code": "003",
+  "firebase_key": "random_string"
   "employee_name": "Kaesa Lyrih",
   "position": "Guru Jaringan"
 }
@@ -55,6 +57,7 @@ POST /api/teachers
 {
   "data": {
     "employee_code": "003",
+    "firebase_key": "random_string"
     "employee_name": "Kaesa Lyrih",
     "position": "Guru Jaringan"
   }
@@ -95,6 +98,7 @@ GET /api/teachers/003
 {
   "data": {
     "employee_code": "003",
+    "firebase_key": "random_string"
     "employee_name": "Kaesa Lyrih",
     "position": "Guru Jaringan"
   }
@@ -132,6 +136,7 @@ PUT /api/teachers/003
 ```json
 {
   "employee_code": "003",
+  "firebase_key": "random_string"
   "employee_name": "Kaesa Lyrih",
   "position": "Guru Jaringan dan Komputer"
 }
@@ -145,6 +150,7 @@ PUT /api/teachers/003
 {
   "data": {
     "employee_code": "003",
+    "firebase_key": "random_string"
     "employee_name": "Kaesa Lyrih",
     "position": "Guru Jaringan dan Komputer"
   }

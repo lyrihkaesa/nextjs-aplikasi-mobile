@@ -1,6 +1,7 @@
 -- CreateTable
 CREATE TABLE `Teacher` (
     `employee_code` VARCHAR(255) NOT NULL,
+    `firebase_key` VARCHAR(255) NULL,
     `employee_name` VARCHAR(255) NULL,
     `position` VARCHAR(255) NULL,
     PRIMARY KEY (`employee_code`)
