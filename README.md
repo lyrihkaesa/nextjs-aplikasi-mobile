@@ -36,6 +36,8 @@ npm i -g pnpm
 git clone https://github.com/lyrihkaesa/nextjs-aplikasi-mobile.git
 ```
 
+### .env file
+
 Sebelum itu, ganti nama file `.env.example` menjadi `.env` atau salin baru ganti nama.
 Nyalakan `mysql` yang ada apada `XAMPP`, dan buat database dengan nama:
 
@@ -43,15 +45,22 @@ Nyalakan `mysql` yang ada apada `XAMPP`, dan buat database dengan nama:
 kuliah_aplikasi_mobile_crud
 ```
 
-Nama diatas menyesuaikan dengan nama yang dibawah.
-
-Untuk usernamenya: root, dan password default: kosong.
+- Nama diatas menyesuaikan dengan nama yang dibawah.
+- Untuk usernamenya: root, dan password default: kosong.
 
 ```env
 DATABASE_URL="mysql://root:@localhost:3306/kuliah_aplikasi_mobile_crud"
 ```
 
-Jalankan perintah dibawah untuk membuat tabel pada schema.prisma ke database:
+---
+
+Sebelum itu install seluruh dependency dengan perintah berikut pada `git bash`
+
+```bash
+pnpm install
+```
+
+Jalankan perintah `git bash` dibawah untuk membuat tabel pada `schema.prisma` ke database:
 
 ```bash
 npx prisma migrate dev
@@ -64,6 +73,24 @@ pnpm run dev
 ```
 
 - <http://localhost:3000/medicines>
+- <http://localhost:3000/teachers>
+  - API Spec [Teacher](docs/teacher.md)
+
+---
+
+## Membuka prisma studio
+
+```bash
+npx prisma studio
+```
+
+Tautan default prisma studio adalah <http://localhost:5555>
+
+```bash
+npx prisma studio --port 6969
+```
+
+Tautan port tidak default prisma studio adalah <http://localhost:6969>
 
 ### Membuat migrations sebelum di push ke database
 
@@ -77,16 +104,11 @@ penamaan migrate saya adalah
 create_table_medicine
 ```
 
-### Membuka prisma studio
-
-```bash
-npx prisma studio
-```
-
-Tautan default prisma studio adalah <http://localhost:5555>
+---
 
 ## Postman
 
 Siahkan download postman collection ini untuk uji coba:
 
-- Postman Colection [NextJS Aplikasi Mobile](./docs/NextJS%20Aplikasi%20Mobile.postman_collection.json)
+- Postman [Colection NextJS Aplikasi Mobile v1.2](./docs/NextJS%20Aplikasi%20Mobile.postman_collection.json)
+- Postman [Environment NextJS Aplikasi Mobile v1.2](<docs/NextJS Aplikasi Mobile.postman_environment.json>)

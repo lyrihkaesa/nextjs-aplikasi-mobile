@@ -12,15 +12,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/medicines",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}medicines",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"medicines"
+						"{{BASE_URL}}medicines"
 					]
 				}
 			},
@@ -28,6 +22,25 @@
 		},
 		{
 			"name": "Add Medicine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response body data should contain id', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('id');\r",
+							"    pm.expect(data.id).to.not.equals('');\r",
+							"\r",
+							"    pm.environment.set('id', data.id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -41,15 +54,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/medicines",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}medicines",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"medicines"
+						"{{BASE_URL}}medicines"
 					]
 				}
 			},
@@ -70,20 +77,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/medicines?id=1",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}medicines?id={{id}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"medicines"
+						"{{BASE_URL}}medicines"
 					],
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "{{id}}"
 						}
 					]
 				}
@@ -105,20 +106,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/medicines?id=1",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}medicines?id={{id}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"medicines"
+						"{{BASE_URL}}medicines"
 					],
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "{{id}}"
 						}
 					]
 				}
@@ -131,15 +126,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/teachers",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}teachers",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"teachers"
+						"{{BASE_URL}}teachers"
 					]
 				}
 			},
@@ -147,12 +136,31 @@
 		},
 		{
 			"name": "Add Teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response body data should contain employee_code', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    const { data } = responseJson;\r",
+							"\r",
+							"    pm.expect(data).to.haveOwnProperty('employee_code');\r",
+							"    pm.expect(data.employee_code).to.not.equals('');\r",
+							"\r",
+							"    pm.environment.set('employee_code', data.employee_code);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"employee_code\": \"001\",\r\n    \"employee_name\": \"Kaesa Lyrih\",\r\n    \"position\": \"Guru Jaringan\"\r\n}",
+					"raw": "{\r\n    \"employee_code\": \"003\",\r\n    \"employee_name\": \"Kaesa Lyrih\",\r\n    \"position\": \"Guru Jaringan\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -160,15 +168,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/teachers",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}teachers",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"teachers"
+						"{{BASE_URL}}teachers"
 					]
 				}
 			},
@@ -181,7 +183,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"employee_code\": \"001\",\r\n    \"employee_name\": \"Kaesa Lyrih\",\r\n    \"position\": \"Guru Jaringan dan Komputer\"\r\n}",
+					"raw": "{\r\n    \"employee_name\": \"Kaesa Lyrih\",\r\n    \"position\": \"Guru Jaringan dan Komputer\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -189,20 +191,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/teachers?employee_code=001",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}teachers?employee_code={{employee_code}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"teachers"
+						"{{BASE_URL}}teachers"
 					],
 					"query": [
 						{
 							"key": "employee_code",
-							"value": "001"
+							"value": "{{employee_code}}"
 						}
 					]
 				}
@@ -210,7 +206,33 @@
 			"response": []
 		},
 		{
-			"name": "Delete Medicine Copy",
+			"name": "Update Teacher URL",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employee_name\": \"Kaesa Lyrih\",\r\n    \"position\": \"Guru Jaringan dan Komputer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}teachers/{{employee_code}}",
+					"host": [
+						"{{BASE_URL}}teachers"
+					],
+					"path": [
+						"{{employee_code}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Teacher",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -224,21 +246,41 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/teachers?employee_code=001",
-					"protocol": "http",
+					"raw": "{{BASE_URL}}teachers?employee_code={{employee_code}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"teachers"
+						"{{BASE_URL}}teachers"
 					],
 					"query": [
 						{
 							"key": "employee_code",
-							"value": "001"
+							"value": "{{employee_code}}"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Teacher URL",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}teachers/{{employee_code}}",
+					"host": [
+						"{{BASE_URL}}teachers"
+					],
+					"path": [
+						"{{employee_code}}"
 					]
 				}
 			},
