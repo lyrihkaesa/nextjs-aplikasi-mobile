@@ -11,15 +11,10 @@ datasource db {
 }
 
 model Medicine {
-  id        Int      @id @default(autoincrement())
-  code      String   @db.VarChar(255)
-  name      String   @db.VarChar(255)
-  satuan    String?  @db.VarChar(255)
-  price     Decimal?
-  amount    Int?
-  expired   Int?
-  packaging String?  @db.VarChar(255)
-  type      String?  @db.VarChar(255)
+  code         String   @id @db.VarChar(255)
+  firebase_key String?  @db.VarChar(255)
+  name         String?  @db.VarChar(255)
+  price        Decimal?
 }
 
 model Teacher {

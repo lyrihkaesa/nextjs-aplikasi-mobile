@@ -5,15 +5,10 @@ import { prismaClient } from '../utils/database';
 const getMedicines = async () => {
   const res = await prismaClient.medicine.findMany({
     select: {
-      id: true,
+      firebase_key: true,
       code: true,
       name: true,
-      satuan: true,
       price: true,
-      amount: true,
-      expired: true,
-      packaging: true,
-      type: true,
     },
   });
   return res;
@@ -24,36 +19,26 @@ const Medicine = async () => {
 
   return (
     <div>
-      <div className="mb-2">
+      {/* <div className="mb-2">
         <AddMedicine />
-      </div>
+      </div> */}
       <table className="table w-full table-zebra">
         <thead>
           <tr>
             <th>#</th>
             <th>Kode</th>
             <th>Nama</th>
-            <th>Satuan</th>
             <th>Harga</th>
-            <th>Jumlah</th>
-            <th>Tanggal Kadaluarsa</th>
-            <th>Kemasan</th>
-            <th>Tipe</th>
             <th className="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
           {medicines.map((medicine, index) => (
-            <tr key={medicine.id}>
-              <td>{medicine.id}</td>
+            <tr key={index}>
+              <td>{medicine.firebase_key}</td>
               <td>{medicine.code}</td>
               <td>{medicine.name}</td>
-              <td>{medicine.satuan}</td>
               <td>{medicine.price && '0'}</td>
-              <td>{medicine.amount}</td>
-              <td>{medicine.expired && '0'}</td>
-              <td>{medicine.packaging}</td>
-              <td>{medicine.type}</td>
               <td></td>
             </tr>
           ))}

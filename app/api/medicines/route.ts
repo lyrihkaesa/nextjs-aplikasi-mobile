@@ -7,57 +7,19 @@ export const GET = async (req: NextRequest) => {
 };
 
 export const POST = async (req: NextRequest) => {
-  const { code, name, satuan, price, amount, expired, packaging, type } = await req.json();
-  const medicine = await prismaClient.medicine.create({
-    data: {
-      code,
-      name,
-      satuan,
-      price,
-      amount,
-      expired,
-      packaging,
-      type,
-    },
-  });
-
-  return NextResponse.json({ data: medicine });
-};
-
-export const PUT = async (req: NextRequest) => {
-  const { code, name, satuan, price, amount, expired, packaging, type } = await req.json();
-  const param = req.nextUrl.searchParams;
-  const id = Number(param.get('id'));
-  const medicine = await prismaClient.medicine.update({
-    where: {
-      id: id,
-    },
-    data: {
-      code,
-      name,
-      satuan,
-      price,
-      amount,
-      expired,
-      packaging,
-      type,
-    },
-  });
-
-  return NextResponse.json({ data: medicine });
-};
-
-export const DELETE = async (req: NextRequest) => {
-  const param = req.nextUrl.searchParams;
-  const id = Number(param.get('id'));
+  const { code, firebase_key, name, price } = await req.json();
   try {
-    await prismaClient.medicine.delete({
-      where: {
-        id: id,
+    const medicine = await prismaClient.medicine.create({
+      data: {
+        code,
+        firebase_key,
+        name,
+        price,
       },
     });
-    return NextResponse.json({ message: 'Berhasil menghapus obat' });
+
+    return NextResponse.json({ data: medicine }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ message: 'Id obat tidak ada' }, { status: 500 });
+    return NextResponse.json({ error: 'Kode medicine mungkin sudah digunakan' }, { status: 400 });
   }
 };
