@@ -5,8 +5,8 @@ import { prismaClient } from '../utils/database';
 const getMedicines = async () => {
   const res = await prismaClient.medicine.findMany({
     select: {
-      firebase_key: true,
       code: true,
+      firebase_key: true,
       name: true,
       price: true,
     },
@@ -38,7 +38,7 @@ const Medicine = async () => {
               <td>{medicine.firebase_key}</td>
               <td>{medicine.code}</td>
               <td>{medicine.name}</td>
-              <td>{medicine.price && '0'}</td>
+              <td>{medicine.price !== null ? Number(medicine.price) : 0} </td>
               <td></td>
             </tr>
           ))}

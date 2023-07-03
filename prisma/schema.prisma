@@ -23,3 +23,10 @@ model Teacher {
   employee_name String? @db.VarChar(255)
   position      String? @db.VarChar(255)
 }
+
+model Matkul {
+  code         String  @id @db.VarChar(255)
+  firebase_key String? @db.VarChar(255)
+  name         String? @db.VarChar(255)
+  sks          Int?
+}
