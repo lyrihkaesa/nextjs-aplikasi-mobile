@@ -3,45 +3,44 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
   const id = params.id;
-  const matkul = await prismaClient.matkul.findUnique({
+  const guru = await prismaClient.guru.findUnique({
     where: {
-      code: id,
+      nip: id,
     },
   });
 
-  if (!matkul) {
+  if (!guru) {
     return NextResponse.json(
       {
-        error: 'No matkul code found',
+        error: 'No guru code found',
       },
       { status: 404 }
     );
   }
 
-  return NextResponse.json({ data: matkul });
+  return NextResponse.json({ data: guru });
 };
 
 export const PUT = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id;
-    let { firebase_key, name, sks } = await req.json();
-
-    const matkul = await prismaClient.matkul.update({
+    let json = await req.json();
+    const guru = await prismaClient.guru.update({
       where: {
-        code: id,
+        nip: id,
       },
       data: {
-        code: id,
-        firebase_key,
-        name,
-        sks,
+        nip: json.nip,
+        nama: json.nama,
+        status: json.status,
+        gaji: json.gaji,
       },
     });
 
-    return NextResponse.json({ data: matkul });
+    return NextResponse.json({ data: guru });
   } catch (error: any) {
     if (error.code === 'P2025') {
-      return NextResponse.json({ error: 'No matkul code found' }, { status: 404 });
+      return NextResponse.json({ error: 'No guru code found' }, { status: 404 });
     }
 
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -51,15 +50,15 @@ export const PUT = async (req: NextRequest, { params }: { params: { id: string }
 export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
     const id = params.id;
-    await prismaClient.matkul.delete({
+    await prismaClient.guru.delete({
       where: {
-        code: id,
+        nip: id,
       },
     });
     return NextResponse.json({ message: 'Berhasil menghapus pegawai' });
   } catch (error: any) {
     if (error.code === 'P2025') {
-      return NextResponse.json({ error: 'No matkul code found' }, { status: 404 });
+      return NextResponse.json({ error: 'No guru code found' }, { status: 404 });
     }
 
     return NextResponse.json({ error: error.message }, { status: 500 });
